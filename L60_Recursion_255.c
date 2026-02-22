@@ -1,3 +1,4 @@
+//head recusion
 #include<stdio.h>
 void sam(int p)
 {
