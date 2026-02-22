@@ -1,4 +1,4 @@
-//example for tail recusrion
+//example for head recusrion
 #include<stdio.h>
 void sam(int p){
     if(p==5) return ;

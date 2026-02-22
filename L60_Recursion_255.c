@@ -1,4 +1,4 @@
-//head recusion
+//tail recusion
 #include<stdio.h>
 void sam(int p)
 {
