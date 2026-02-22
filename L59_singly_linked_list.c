@@ -14,6 +14,7 @@ void add_student();
 void search_student();
 void update_student();
 void delete_student();
+
 void distroy_linked_list();
 void printline();
 int check(int);
@@ -141,5 +142,118 @@ void add_student()
     }       
     printf("Student Successfully Added!!");    
     printf("press enter to continue......");
+    getchar();
+}
+void search_student() {
+    int roll;
+    if(start==NULL)
+    {
+        printf("No student added to search!!!\n");
+        printf("press enter continue.......");
+        getchar();
+        return;
+    }
+    printf("Enter roll : ");
+    scanf("%d",&roll);
+    while(getchar()!='\n');
+    ptr=start;
+    while(ptr!=NULL && ptr->roll_number!=roll)
+    {
+        ptr=ptr->next;
+    }
+    if(ptr==NULL)
+    {
+        printf("Student not found!!\n");
+        return;
+    }
+    printf("Student Name \t ROll number\n");
+    printf("%s %s\t%d\n",ptr->first_name,ptr->last_name,ptr->roll_number);
+}
+
+void update_student() {
+    int roll;
+    if(start==NULL)
+    {
+        printf("No student added to update the details!!!\n");
+        printf("press enter to continue....");
+        getchar();
+        return;
+    }
+    printf("enter roll: ");
+    scanf("%d",&roll);
+    while(getchar()!='\n');
+    ptr=start;
+    while(ptr!=NULL && ptr->roll_number!=roll)
+    {
+        ptr=ptr->next;
+    }
+    if(ptr==NULL)
+    {
+        printf("Student not found!\n");
+        return;
+    }
+    int choice=0;
+    printf("01. Update First name\n02. UPdate Last name\n03.exit\n");
+    while(choice!=3)
+    {
+        printf("Enter the choice :");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+                char f[20];
+                printf("Enter New Fname : ");
+                scanf("%s",f);
+                getchar();
+                strcpy(ptr->first_name, f);
+                break;
+            case 2:
+                char l[20];
+                printf("Enter New Fname : ");
+                scanf("%s",l);
+                getchar();
+                strcpy(ptr->last_name, l);
+                break;          
+        };
+    }
+}
+
+void delete_student()
+{
+    int roll;
+    struct Student *prev = NULL;
+
+    if(start == NULL)
+    {
+        printf("No student to delete!\n");
+        getchar();
+        return;
+    }
+
+    printf("Enter roll: ");
+    scanf("%d",&roll);
+    while(getchar()!='\n');
+
+    ptr = start;
+
+    while(ptr != NULL && ptr->roll_number != roll)
+    {
+        prev = ptr;
+        ptr = ptr->next;
+    }
+
+    if(ptr == NULL)
+    {
+        printf("Student not found!\n");
+        getchar();
+        return;
+    }
+
+    if(prev == NULL)
+        start = ptr->next;
+    else
+        prev->next = ptr->next;
+
+    free(ptr);
+    printf("Student deleted successfully!\npress enter to continue.......");
     getchar();
 }
