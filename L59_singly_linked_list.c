@@ -92,7 +92,7 @@ void display_student()
     }
     ptr=start;
     printline();
-    printf("Name\t\tRoll Number\n");
+    printf("Name\t\tRoll Nu  mber\n");
     printline();
     while(ptr!=NULL)
     {
